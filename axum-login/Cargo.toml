@@ -1,19 +1,19 @@
 [package]
-name = "axum-login"
-version = "0.5.0"
+categories = [
+  "web-programming::http-server",
+  "web-programming",
+  "database",
+  "asynchronous",
+]
 description = "🪪 Session-based user authentication for Axum."
+documentation = "https://docs.rs/axum-login"
 edition = "2021"
 homepage = "https://github.com/maxcountryman/axum-login"
-license = "MIT"
 keywords = ["sessions", "authentication", "authorization", "login", "axum"]
-categories = [
-    "web-programming::http-server",
-    "web-programming",
-    "database",
-    "asynchronous",
-]
+license = "MIT"
+name = "axum-login"
 repository = "https://github.com/maxcountryman/axum-login"
-documentation = "https://docs.rs/axum-login"
+version = "0.5.0"
 
 [package.metadata.docs.rs]
 all-features = true
@@ -24,6 +24,7 @@ default = []
 mssql = ["sqlx/mssql"]
 mysql = ["sqlx/mysql"]
 postgres = ["sqlx/postgres"]
+rusqlite = ["dep:rusqlite", "dep:tokio-rusqlite"]
 sqlite = ["sqlx/sqlite"]
 sqlx = ["sqlx/runtime-tokio-rustls"]
 
@@ -31,29 +32,31 @@ sqlx = ["sqlx/runtime-tokio-rustls"]
 async-trait = "0.1.57"
 axum = "0.6"
 axum-sessions = "0.5"
-percent-encoding = "2.2"
 base64 = "0.13"
+dyn-clone = "1"
 futures = "0.3"
+percent-encoding = "2.2"
 ring = "0.16"
+rusqlite = {version = ">=0.27.0", optional = true}
+secrecy = "0.8"
 serde = "1"
 serde_json = "1"
-sqlx = { version = "0.6", optional = true }
-tokio = { version = "1.20", features = ["sync"] }
+sqlx = {version = ">=0.6", optional = true}
+tokio = {version = "1.20", features = ["sync"]}
+tokio-rusqlite = {version = ">=0.2.0", optional = true}
 tower = "0.4"
-tower-http = { version = "0.4", features = ["auth"] }
+tower-http = {version = "0.4", features = ["auth"]}
 tracing = "0.1"
-secrecy = "0.8"
-dyn-clone = "1"
 
 [dev-dependencies]
 http = "0.2"
 hyper = "0.14"
 
 [dev-dependencies.rand]
-version = "0.8"
 features = ["min_const_gen"]
+version = "0.8"
 
 [dev-dependencies.tokio]
-version = "1.20"
 default-features = false
 features = ["macros", "rt-multi-thread"]
+version = "1.20"

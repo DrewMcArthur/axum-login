@@ -1,23 +1,23 @@
 [package]
-name = "axum_login_tests"
-version = "0.4.1"
 description = "🪪 Session-based user authentication for Axum."
+documentation = "https://docs.rs/axum-login"
 edition = "2021"
 homepage = "https://github.com/maxcountryman/axum-login"
 license = "MIT"
-repository = "https://github.com/maxcountryman/axum-login"
-documentation = "https://docs.rs/axum-login"
+name = "axum_login_tests"
 publish = false
+repository = "https://github.com/maxcountryman/axum-login"
+version = "0.4.1"
 
 [dependencies]
-axum-login = { path = "../axum-login", features = [
-    "sqlx",
-    "mssql",
-    "mysql",
-    "postgres",
-    "sqlite",
-] }
-sqlx = { version = "0.6" }
+axum-login = {path = "../axum-login", features = [
+  "sqlx",
+  "mssql",
+  "mysql",
+  "postgres",
+  "sqlite",
+]}
+sqlx = {version = ">=0.6"}
 
 [features]
 mysql = ["axum-login/mysql"]
@@ -30,6 +30,6 @@ sqlx = ["axum-login/sqlx"]
 # mssql = ["axum-login/mssql"]
 
 [[test]]
+harness = true
 name = "integration_tests"
 path = "tests/lib.rs"
-harness = true
